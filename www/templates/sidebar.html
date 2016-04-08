@@ -1,0 +1,60 @@
+<ion-side-menus enable-menu-with-back-views="false">
+
+  <ion-side-menu-content>
+
+  <ion-header-bar align-title="left" class="profile-bar">
+
+    <div class="buttons">
+      <button ng-if="storage.profilePic === undefined" class="button button-clear" ng-click="refreshList()">Refresh</button>
+      <button ng-if="storage.profilePic" class="button button-clear" ng-click="refreshList()">Refresh</button>
+    </div>
+
+    <h1 class="title user-title">SaveMe</h1>
+
+    <div class="buttons">
+      <button ng-if="storage.profilePic === undefined" class="button button-clear" ng-click="login()">Login</button>
+      <div ng-if="storage.profilePic"  ng-click="profile()"  class="profile-pic" ng-style="{'background-image': 'url(' + storage.profilePic + ')'}"></div>
+    </div>
+  </ion-header-bar>
+
+
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+
+
+
+
+
+  <!--<ion-side-menu side="left">-->
+    <!--<ion-header-bar class="bar-saveme">-->
+      <!--<h1 class="title">Menu</h1>-->
+    <!--</ion-header-bar>-->
+    <!--<ion-content>-->
+      <!--<ion-list>-->
+        <!--<ion-item menu-close href="#/app/coffees">-->
+          <!--Savings-->
+        <!--</ion-item>-->
+        <!--<ion-item menu-close href="#/app/coupons">-->
+          <!--Coupons-->
+        <!--</ion-item>-->
+        <!--<ion-item menu-close ng-click="login()">-->
+          <!--Login-->
+        <!--</ion-item>-->
+
+        <!--&lt;!&ndash;<ion-item menu-close href="#/app/search">&ndash;&gt;-->
+          <!--&lt;!&ndash;Search&ndash;&gt;-->
+        <!--&lt;!&ndash;</ion-item>&ndash;&gt;-->
+        <!--&lt;!&ndash;<ion-item menu-close href="#/app/browse">&ndash;&gt;-->
+          <!--&lt;!&ndash;Browse&ndash;&gt;-->
+        <!--&lt;!&ndash;</ion-item>&ndash;&gt;-->
+
+      <!--</ion-list>-->
+    <!--</ion-content>-->
+  <!--</ion-side-menu>-->
+
+
+
+
+
+</ion-side-menus>

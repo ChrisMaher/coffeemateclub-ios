@@ -1,0 +1,115 @@
+<ion-modal-view>
+
+  <ion-header-bar align-title="left" class="profile-bar">
+    <div class="buttons">
+      <button class="button button-clear"  ng-click="logout()">Logout</button>
+    </div>
+    <h1 class="title user-title">{{storage.username}}</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeProfile()">Close</button>
+    </div>
+
+  </ion-header-bar>
+
+
+  <ion-content ng-cloak class="profile-content">
+
+
+    <!-- Profile Box Here -->
+
+    <div class="coffees-list">
+
+
+      <div class="row group-item-profile">
+
+        <div class="col">
+          <div ng-show="storage.profilePic" class="profile-pic-profile"
+               ng-style="{'background-image': 'url(' + storage.profilePic + ')'}"></div>
+        </div>
+
+
+        <div class="col profile-text">
+
+
+          <div class="row text-center">
+            <div class="col"><b>Member Since : </b></div>
+          </div>
+          <div class="row text-center">
+            <div class="col">{{storage.created.toUpperCase() | date : format}}</div>
+          </div>
+          <div class="row text-center">
+            <div class="col"><b>Votes : {{totalUpvotes}} <span class="ion-android-arrow-up" aria-hidden="true"></span> -
+              {{totalDownvotes}} <span class="ion-android-arrow-down" aria-hidden="true"></span></b></div>
+          </div>
+          <div class="row text-center">
+            <div class="col"><b>Savings Posted : {{coffeesCountTotal}}</b></div>
+          </div>
+          <div class="row text-center">
+            <div class="col"><b>Location : </b>{{storage.county.toUpperCase()}}</div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <ion-list>
+
+      <ion-item href="#/app/coffees/{{coffee._id}}" ng-click="closeProfile()"
+                ng-repeat="coffee in coffeesProfile| filter:{user: {_id: storage._id}} |orderBy:'votesreal' "
+                class="coffees-list">
+
+        <div class="row group-item">
+
+          <div class="col-75 title-70">
+
+            <div class="row">
+              <button ng-class="buttonColour(coffee.votes)" class='button small-button-home-votes'>{{coffee.votes}}</button>
+            </div>
+
+            <div class="row title-text"><div class="timeframe-row-item-3-text bolder">{{coffee.title}}</div></div>
+            <div class="row title-text-brand"><div class="timeframe-row-item-3-text-brand bolder">{{coffee.brand}}</div></div>
+
+
+          </div>
+          <div class="col-25 image-30">
+
+            <div class="coffee-image-box">
+              <img class="list-image thumbnail" ng-src="{{productImage(coffee)}}">
+            </div>
+
+
+
+          </div>
+
+
+        </div>
+        <div class="row bottom-row">
+
+
+
+          <img ng-src="{{storage.profilePic}}"
+               class="small-profile-image-thumbnail"
+               alt="{{coffee.user.username}}"/>
+
+          <div class="username" data-ng-bind="coffee.user.username"></div>
+          <div class="username-date">{{coffee.created | date : format}}</div>
+
+
+
+        </div>
+
+
+      </ion-item>
+
+    </ion-list>
+
+
+  </ion-content>
+</ion-modal-view>
+
+
+
+

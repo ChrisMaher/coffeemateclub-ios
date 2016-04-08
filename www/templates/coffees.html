@@ -1,0 +1,56 @@
+<ion-view>
+
+  <ion-content ng-cloak  class="profile-content">
+
+    <ion-list >
+      <ion-item href="#/app/coffees/{{coffee._id}}" ng-repeat="coffee in coffees track by $index |orderBy:'votesreal'" class="coffees-list">
+
+
+        <div class="row group-item">
+
+          <div class="col-75 title-70">
+
+            <div class="row">
+              <button ng-class="buttonColour(coffee.votes)" class='button small-button-home-votes'>{{coffee.votes}}</button>
+            </div>
+
+            <div class="row title-text"><div class="timeframe-row-item-3-text bolder">{{coffee.title}}</div></div>
+            <div class="row title-text-brand"><div class="timeframe-row-item-3-text-brand bolder">{{coffee.brand}}</div></div>
+
+
+          </div>
+          <div class="col-25 image-30">
+
+            <div class="coffee-image-box">
+              <img class="list-image thumbnail" ng-src="{{productImage(coffee)}}">
+            </div>
+
+
+
+          </div>
+
+
+        </div>
+        <div class="row bottom-row">
+
+
+
+          <img ng-src="{{userImage(coffee)}}"
+               class="small-profile-image-thumbnail"
+               alt="{{coffee.user.username}}"/>
+
+          <div class="username" data-ng-bind="coffee.user.username"></div>
+          <div class="username-date">{{coffee.created | date : format}}</div>
+
+
+
+        </div>
+
+
+      </ion-item>
+
+    </ion-list>
+
+
+  </ion-content>
+</ion-view>

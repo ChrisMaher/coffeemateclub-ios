@@ -1,0 +1,121 @@
+<ion-view view-title="">
+  <ion-content  class="profile-content">
+
+    <div class="outer-container-coffee">
+
+      <div class="list card">
+
+        <div class="row top-row">
+          <img ng-src="{{userImage(coffee)}}" class="small-profile-image-thumbnail-top"
+               alt="{{coffee.user.username}}"/>
+          <div class="username-top" data-ng-bind="coffee.user.username"></div>
+          <div class="username-date-top">{{coffee.created | date : format}}</div>
+        </div>
+
+
+
+        <div class="item item-body">
+
+          <div class="row coffee-votes-row">
+            <button ng-class="buttonColour(coffee.votes)" class='button small-button-home-votes coffee-votes-button'>{{coffee.votes}}</button>
+          </div>
+
+          <img class="full-image" ng-src="{{productImage(coffee)}}">
+
+          <div class="product-view-title"> {{coffee.title}}<div class="coffee-price"></div>  <div class="coffee-brand-text">({{coffee.brand}})</div>
+          </div>
+
+
+
+          <div class="text-center">{{coffee.marketingtext}}</div>
+
+
+
+        </div>
+
+        <div class="row item" ng-show="storage.username">
+
+        <div class="col text-center">
+        <button ng-disabled="votedCold" ng-click="voteDown(coffee)" class='button button-positive small-button-cold'>COLD</button>
+        </div>
+
+        <div class="col text-center">
+        <button ng-disabled="votedHot" ng-click="voteUp(coffee)" class='button button-positive small-button-hot'>HOT</button>
+        </div>
+
+        </div>
+
+
+
+
+
+        <div class="row item" ng-cloak>
+          <div class="col text-center">
+            <div class="coffee-price-coffee"> €{{coffee.price}}</div>
+          </div>
+
+          <div class="col text-center">
+
+            <a rel="{{productImage(coffee)}}" href="{{coffee.retailer}}" onclick="window.open(this.href, '_system', 'location=yes'); return false;">
+              <button class='button button-positive small-button-save'>View</button>
+            </a>
+          </div>
+
+
+        </div>
+
+        <div class="comments-coffee">
+
+          <h4>Comments</h4>
+
+
+
+          <div ng-repeat="post in posts | filter:{ coffeeId: coffee._id}|orderBy : 'created'">
+
+
+            <div class="row single-comment-coffee">
+
+              <div class="col-20 avatar-column-comments-coffee">
+
+                <div class="comment-details-coffee">
+
+                  <img ng-src="{{userImage(post)}}" class="small-profile-image-thumbnail-comment"
+                       alt="{{post.user.username}}"/>
+
+                </div>
+
+              </div>
+
+              <div class="col-80">
+
+                <div class="comment-details-coffee-top">
+
+                  <span class="username-comment">{{post.user.username}}</span> <span class="date-comment">{{post.created | date : format}}</span>
+
+                </div>
+
+                <div class="comment-details-coffee">
+
+                  <text-angular ta-toolbar="[[]]" ng-bind-html="post.details"></text-angular>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+
+
+          </div>
+
+
+        </div>
+
+
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>
